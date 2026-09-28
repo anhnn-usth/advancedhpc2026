@@ -1,0 +1,8 @@
+name: hpc
+channels:
+  - defaults
+dependencies:
+  - python
+  - cuda-version=13
+  - numba-cuda
+prefix: /home/nhatanhng/miniconda3/envs/hpc
