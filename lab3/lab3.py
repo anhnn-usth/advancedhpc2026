@@ -23,11 +23,7 @@ def main():
 
     start_cpu = time.time()
     for i in range(width * height):
-        r = img_flat[i, 0]
-        g = img_flat[i, 1]
-        b = img_flat[i, 2]
-        #https://biology.stackexchange.com/questions/110562/what-is-the-best-estimate-of-rgb-color-sensitivity-of-human-eye
-        cpu_gray_flat[i] = 0.64 * r + 0.32 * g + 0.02 * b
+        cpu_gray_flat[i] = (img_flat[i, 0] + img_flat[i, 1] + img_flat[i, 2]) / 3
     end_cpu = time.time()
 
     cpu_time = end_cpu - start_cpu
