@@ -17,7 +17,7 @@ def main():
     img = plt.imread(image_path).astype(np.float32)
     height, width, channels = img.shape
 
-    block_sizes = [(8, 8), (16, 16), (32, 32)]
+    block_sizes = [(8, 8), (16,8),(8,16),(16,32),(32,16), (16, 16), (32, 32)]
     block_labels = [f"{b[0]}x{b[1]}" for b in block_sizes]
     
     cpu_times = []
