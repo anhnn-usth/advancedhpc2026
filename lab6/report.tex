@@ -10,7 +10,7 @@
 \section{Introduction}
 I have made the grayscale image binarization, brightness control, blending two images. All the code given are following strictly from report. 
 
-\section{Results}
+\section{Results: CPU}
 Image Binarization
 \begin{figure}[H]
     \centering 
@@ -40,6 +40,38 @@ Image blending
     \includegraphics[width=0.7\linewidth]{output_blended.jpg}
     \caption{Image Blended.}
     \label{fig:blended_image}
+\end{figure}
+
+\section{Results: GPU}
+Image Binarization
+\begin{figure}[H]
+    \centering 
+    \includegraphics[width=0.7\linewidth]{output_binarized_gpu.jpg}
+    \caption{Binarized Image.}
+    \label{fig:binarized_img_gpu} 
+\end{figure}
+
+Image Brighness Control
+\begin{figure}[H]
+    \centering 
+    \includegraphics[width=0.7\linewidth]{output_50_gpu.jpg}
+    \caption{Inc. brightness Image.}
+    \label{fig:image_inc_gpu}
+\end{figure}
+
+\begin{figure}[H]
+    \centering 
+    \includegraphics[width=0.7\linewidth]{output_-50_gpu.jpg}
+    \caption{Dec. Brightness Image.}
+    \label{fig:image_dec_gpu}
+\end{figure}
+
+Image blending
+\begin{figure}[H]
+    \centering 
+    \includegraphics[width=0.7\linewidth]{output_blended_gpu.jpg}
+    \caption{Image Blended.}
+    \label{fig:blended_image_gpu}
 \end{figure}
 
 \section{Discussion}
