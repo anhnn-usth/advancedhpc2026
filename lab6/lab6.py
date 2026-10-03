@@ -53,10 +53,7 @@ def binarize_image_gpu(img_array, tau, block_dim=(16, 16)):
     d_img = cuda.to_device(img_array)
     d_out = cuda.device_array((height, width), dtype=np.uint8)
 
-    grid_dim = (
-        math.ceil(width / block_dim[0]),
-        math.ceil(height / block_dim[1])
-    )
+    grid_dim = (width / block_dim[0],height / block_dim[1])
 
     binarized_kernel[grid_dim, block_dim](d_img, d_out, width, height, tau)
     return d_out.copy_to_host()
@@ -68,29 +65,20 @@ def adjust_brightness_gpu(img_array, delta, block_dim=(16, 16)):
     d_img = cuda.to_device(img_array)
     d_out = cuda.device_array_like(img_array)
 
-    grid_dim = (
-        math.ceil(width / block_dim[0]),
-        math.ceil(height / block_dim[1])
-    )
+    grid_dim = (width / block_dim[0],height / block_dim[1])
 
     brightness_kernel[grid_dim, block_dim](d_img, d_out, width, height, channels, delta)
     return d_out.copy_to_host()
 
 
 def blend_images_gpu(img1_array, img2_array, c=0.5, block_dim=(16, 16)):
-    if img1_array.shape != img2_array.shape:
-        raise ValueError(f"Shape mismatch: {img1_array.shape} vs {img2_array.shape}")
-
     height, width, channels = img1_array.shape
 
     d_img1 = cuda.to_device(img1_array)
     d_img2 = cuda.to_device(img2_array)
     d_out = cuda.device_array_like(img1_array)
 
-    grid_dim = (
-        math.ceil(width / block_dim[0]),
-        math.ceil(height / block_dim[1])
-    )
+    grid_dim = (width / block_dim[0],height / block_dim[1])
 
     blend_kernel[grid_dim, block_dim](d_img1, d_img2, d_out, width, height, channels, c)
     return d_out.copy_to_host()
